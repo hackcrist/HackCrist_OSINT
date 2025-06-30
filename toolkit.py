@@ -1,63 +1,56 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-
 # HackCrist OSINT Toolkit
-# Basado en Doxxer-Toolkit de Euronymou5
-# Adaptado y mantenido por HackCrist
-# Licencia: MPL-2.0 + Apache 2.0
 
 import os
-import time
+import modules.sherlock as sherlock
+import modules.nexfil as nexfil
+import modules.geoip as geoip
+import modules.phoneinfoga as phoneinfoga
+import modules.qrcodegen as qrcodegen
+import modules.shortener as shortener
 
-class Colores:
-    red = "\033[31;1m"
-    verde = "\033[92m"
-    azul = "\033[94m"
-    magenta = "\033[36m"
-    amarillo = "\033[33m"
-
-logo = Colores.red + '''
+def banner():
+    return """
 ██████╗  █████╗  ██████╗██╗  ██╗ ██████╗ ██████╗ ██╗███████╗████████╗
 ██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔═══██╗██╔══██╗██║██╔════╝╚══██╔══╝
 ██║  ██║███████║██║     █████╔╝ ██║   ██║██████╔╝██║███████╗   ██║   
 ██║  ██║██╔══██║██║     ██╔═██╗ ██║   ██║██╔═══╝ ██║╚════██║   ██║   
 ██████╔╝██║  ██║╚██████╗██║  ██╗╚██████╔╝██║     ██║███████║   ██║   
 ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝   ╚═╝   
-                   HackCrist OSINT Toolkit v2.6
-'''
+               HackCrist OSINT Toolkit
+"""
 
 def menu():
     os.system("clear")
-    print(logo)
-    print(Colores.azul + '''
-    [1] Sherlock / Nexfil
-    [2] GeoIP
-    [3] Phoneinfoga
-    [4] Generar QR
-    [5] Acortar Link
-    [6] OSINT Links
-    [99] Salir
-    ''' )
-
-    op = input('HackCrist > ')
+    print(banner())
+    print("""
+[1] Sherlock
+[2] Nexfil
+[3] GeoIP
+[4] PhoneInfoga
+[5] QR Generator
+[6] Shortener
+[99] Salir
+""")
+    op = input("> ")
     if op == '1':
-        print('Aquí va el módulo Sherlock...')
+        sherlock.run()
     elif op == '2':
-        print('Aquí va GeoIP...')
+        nexfil.run()
     elif op == '3':
-        print('Aquí va Phoneinfoga...')
+        geoip.run()
     elif op == '4':
-        print('Aquí va QR...')
+        phoneinfoga.run()
     elif op == '5':
-        print('Aquí va Shorteners...')
+        qrcodegen.run()
     elif op == '6':
-        print('Aquí van los links OSINT...')
+        shortener.run()
     elif op == '99':
         exit()
     else:
-        print('Opción inválida.')
-        time.sleep(2)
-        menu()
+        print("Opción inválida")
+    input("Pulsa enter para volver...")
+    menu()
 
 if __name__ == '__main__':
     menu()
