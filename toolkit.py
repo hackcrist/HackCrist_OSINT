@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# HackCrist OSINT Toolkit
+# HackCrist OSINT Toolkit REAL
 
 import os
+
 import modules.sherlock as sherlock
 import modules.nexfil as nexfil
 import modules.geoip as geoip
@@ -17,7 +18,7 @@ def banner():
 ██║  ██║██╔══██║██║     ██╔═██╗ ██║   ██║██╔═══╝ ██║╚════██║   ██║   
 ██████╔╝██║  ██║╚██████╗██║  ██╗╚██████╔╝██║     ██║███████║   ██║   
 ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝   ╚═╝   
-               HackCrist OSINT Toolkit
+                HackCrist OSINT Toolkit v2.6
 """
 
 def menu():
@@ -33,6 +34,7 @@ def menu():
 [99] Salir
 """)
     op = input("> ")
+
     if op == '1':
         sherlock.run()
     elif op == '2':
@@ -49,8 +51,8 @@ def menu():
         exit()
     else:
         print("Opción inválida")
-    input("Pulsa enter para volver...")
+    input("\nPulsa ENTER para volver al menú...")
     menu()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     menu()
